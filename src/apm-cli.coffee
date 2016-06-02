@@ -10,7 +10,7 @@ wordwrap = require 'wordwrap'
 # Enable "require" scripts in asar archives
 require 'asar-require'
 
-config = require './apm'
+config = require './ppm'
 fs = require './fs'
 git = require './git'
 
@@ -65,16 +65,16 @@ parseOptions = (args=[]) ->
   options = yargs(args).wrap(100)
   options.usage """
 
-    apm - Atom Package Manager powered by https://atom.io
+    ppm - Atom Package Manager powered by https://atom.io
 
-    Usage: apm <command>
+    Usage: ppm <command>
 
     where <command> is one of:
     #{wordwrap(4, 80)(Object.keys(commands).sort().join(', '))}.
 
-    Run `apm help <command>` to see the more details about a specific command.
+    Run `ppm help <command>` to see the more details about a specific command.
   """
-  options.alias('v', 'version').describe('version', 'Print the apm version')
+  options.alias('v', 'version').describe('version', 'Print the ppm version')
   options.alias('h', 'help').describe('help', 'Print this usage message')
   options.boolean('color').default('color', true).describe('color', 'Enable colored output')
   options.command = options.argv._[0]
@@ -94,7 +94,7 @@ showHelp = (options) ->
   console.error(help)
 
 printVersions = (args, callback) ->
-  apmVersion =  require('../package.json').version ? ''
+  ppmVersion =  require('../package.json').version ? ''
   npmVersion = require('npm/package.json').version ? ''
   nodeVersion = process.versions.node ? ''
 
@@ -102,7 +102,7 @@ printVersions = (args, callback) ->
     git.getGitVersion (gitVersion) ->
       if args.json
         versions =
-          apm: apmVersion
+          ppm: ppmVersion
           npm: npmVersion
           node: nodeVersion
           python: pythonVersion
@@ -114,7 +114,7 @@ printVersions = (args, callback) ->
         pythonVersion ?= ''
         gitVersion ?= ''
         versions =  """
-          #{'apm'.red}  #{apmVersion.red}
+          #{'ppm'.red}  #{ppmVersion.red}
           #{'npm'.green}  #{npmVersion.green}
           #{'node'.blue} #{nodeVersion.blue}
           #{'python'.yellow} #{pythonVersion.yellow}

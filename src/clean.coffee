@@ -6,7 +6,7 @@ yargs = require 'yargs'
 _ = require 'underscore-plus'
 
 Command = require './command'
-config = require './apm'
+config = require './ppm'
 fs = require './fs'
 
 module.exports =
@@ -40,7 +40,7 @@ class Clean extends Command
     modulesToRemove = []
     modulesPath = path.resolve('node_modules')
     installedModules = fs.list(modulesPath).filter (modulePath) ->
-      modulePath isnt '.bin' and modulePath isnt 'atom-package-manager'
+      modulePath isnt '.bin' and modulePath isnt 'proton-package-manager'
 
     # Find all dependencies of all installed modules recursively
     for installedModule in installedModules
@@ -59,7 +59,7 @@ class Clean extends Command
     options = yargs(argv).wrap(100)
 
     options.usage """
-      Usage: apm clean
+      Usage: ppm clean
 
       Deletes all packages in the node_modules folder that are not referenced
       as a dependency in the package.json file.

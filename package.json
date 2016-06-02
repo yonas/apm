@@ -1,18 +1,18 @@
 {
-  "name": "atom-package-manager",
-  "description": "Atom package manager",
+  "name": "proton-package-manager",
+  "description": "Proton package manager",
   "version": "1.10.0",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/atom/apm.git"
+    "url": "https://github.com/yonas/ppm.git"
   },
   "bugs": {
-    "url": "https://github.com/atom/apm/issues"
+    "url": "https://github.com/yonas/ppm/issues"
   },
-  "main": "./lib/apm.js",
+  "main": "./lib/ppm.js",
   "bin": {
-    "apm": "./bin/apm"
+    "ppm": "./bin/ppm"
   },
   "scripts": {
     "prepublish": "grunt prepublish",

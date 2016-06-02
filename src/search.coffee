@@ -2,7 +2,7 @@ _ = require 'underscore-plus'
 yargs = require 'yargs'
 
 Command = require './command'
-config = require './apm'
+config = require './ppm'
 request = require './request'
 tree = require './tree'
 {isDeprecatedPackage} = require './deprecated-packages'
@@ -15,7 +15,7 @@ class Search extends Command
     options = yargs(argv).wrap(100)
     options.usage """
 
-      Usage: apm search <package_name>
+      Usage: ppm search <package_name>
 
       Search for Atom packages/themes on the atom.io registry.
     """
@@ -81,7 +81,7 @@ class Search extends Command
           label
 
         console.log()
-        console.log "Use `apm install` to install them or visit #{'http://atom.io/packages'.underline} to read more about them."
+        console.log "Use `ppm install` to install them or visit #{'http://atom.io/packages'.underline} to read more about them."
         console.log()
 
       callback()

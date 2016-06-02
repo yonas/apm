@@ -12,22 +12,22 @@ module.exports =
     process.env.ATOM_HOME ? path.join(@getHomeDirectory(), '.atom')
 
   getCacheDirectory: ->
-    path.join(@getAtomDirectory(), '.apm')
+    path.join(@getAtomDirectory(), '.ppm')
 
   getResourcePath: (callback) ->
     if process.env.ATOM_RESOURCE_PATH
       return process.nextTick -> callback(process.env.ATOM_RESOURCE_PATH)
 
-    apmFolder = path.resolve(__dirname, '..')
-    appFolder = path.dirname(apmFolder)
-    if path.basename(apmFolder) is 'apm' and path.basename(appFolder) is 'app'
+    ppmFolder = path.resolve(__dirname, '..')
+    appFolder = path.dirname(ppmFolder)
+    if path.basename(ppmFolder) is 'ppm' and path.basename(appFolder) is 'app'
       asarPath = "#{appFolder}.asar"
       if fs.existsSync(asarPath)
         return process.nextTick -> callback(asarPath)
 
-    apmFolder = path.resolve(__dirname, '..', '..', '..')
-    appFolder = path.dirname(apmFolder)
-    if path.basename(apmFolder) is 'apm' and path.basename(appFolder) is 'app'
+    ppmFolder = path.resolve(__dirname, '..', '..', '..')
+    appFolder = path.dirname(ppmFolder)
+    if path.basename(ppmFolder) is 'ppm' and path.basename(appFolder) is 'app'
       asarPath = "#{appFolder}.asar"
       if fs.existsSync(asarPath)
         return process.nextTick -> callback(asarPath)
@@ -68,10 +68,10 @@ module.exports =
       else process.arch  # On BSD and Linux we use current machine's arch.
 
   getUserConfigPath: ->
-    path.resolve(@getAtomDirectory(), '.apmrc')
+    path.resolve(@getAtomDirectory(), '.ppmrc')
 
   getGlobalConfigPath: ->
-    path.resolve(@getAtomDirectory(), '.apm', '.apmrc')
+    path.resolve(@getAtomDirectory(), '.ppm', '.ppmrc')
 
   isWin32: ->
     process.platform is 'win32'
@@ -110,9 +110,9 @@ module.exports =
     try
       fs.writeFileSync @getGlobalConfigPath(), """
         ; This file is auto-generated and should not be edited since any
-        ; modifications will be lost the next time any apm command is run.
+        ; modifications will be lost the next time any ppm command is run.
         ;
-        ; You should instead edit your .apmrc config located in ~/.atom/.apmrc
+        ; You should instead edit your .ppmrc config located in ~/.atom/.ppmrc
         cache = #{@getCacheDirectory()}
 
       """

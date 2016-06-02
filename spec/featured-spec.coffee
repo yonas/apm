@@ -1,9 +1,9 @@
 path = require 'path'
 express = require 'express'
 http = require 'http'
-apm = require '../lib/apm-cli'
+ppm = require '../lib/ppm-cli'
 
-describe 'apm featured', ->
+describe 'ppm featured', ->
   server = null
 
   beforeEach ->
@@ -26,7 +26,7 @@ describe 'apm featured', ->
 
   it 'lists the featured packages and themes', ->
     callback = jasmine.createSpy('callback')
-    apm.run(['featured'], callback)
+    ppm.run(['featured'], callback)
 
     waitsFor 'waiting for command to complete', ->
       callback.callCount > 0
@@ -40,7 +40,7 @@ describe 'apm featured', ->
   describe 'when the theme flag is specified', ->
     it "lists the featured themes", ->
       callback = jasmine.createSpy('callback')
-      apm.run(['featured', '--themes'], callback)
+      ppm.run(['featured', '--themes'], callback)
 
       waitsFor 'waiting for command to complete', ->
         callback.callCount > 0

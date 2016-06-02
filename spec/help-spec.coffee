@@ -1,14 +1,14 @@
-apm = require '../lib/apm-cli'
+ppm = require '../lib/ppm-cli'
 
 describe 'command help', ->
   beforeEach ->
     spyOnToken()
     silenceOutput()
 
-  describe "apm help publish", ->
+  describe "ppm help publish", ->
     it "displays the help for the command", ->
       callback = jasmine.createSpy('callback')
-      apm.run(['help', 'publish'], callback)
+      ppm.run(['help', 'publish'], callback)
 
       waitsFor 'waiting for help to complete', 60000, ->
         callback.callCount is 1
@@ -17,10 +17,10 @@ describe 'command help', ->
         expect(console.error.callCount).toBeGreaterThan 0
         expect(callback.mostRecentCall.args[0]).toBeUndefined()
 
-  describe "apm publish -h", ->
+  describe "ppm publish -h", ->
     it "displays the help for the command", ->
       callback = jasmine.createSpy('callback')
-      apm.run(['publish', '-h'], callback)
+      ppm.run(['publish', '-h'], callback)
 
       waitsFor 'waiting for help to complete', 60000, ->
         callback.callCount is 1
@@ -29,10 +29,10 @@ describe 'command help', ->
         expect(console.error.callCount).toBeGreaterThan 0
         expect(callback.mostRecentCall.args[0]).toBeUndefined()
 
-  describe "apm help", ->
-    it "displays the help for apm", ->
+  describe "ppm help", ->
+    it "displays the help for ppm", ->
       callback = jasmine.createSpy('callback')
-      apm.run(['help'], callback)
+      ppm.run(['help'], callback)
 
       waitsFor 'waiting for help to complete', 60000, ->
         callback.callCount is 1
@@ -41,10 +41,10 @@ describe 'command help', ->
         expect(console.error.callCount).toBeGreaterThan 0
         expect(callback.mostRecentCall.args[0]).toBeUndefined()
 
-  describe "apm", ->
-    it "displays the help for apm", ->
+  describe "ppm", ->
+    it "displays the help for ppm", ->
       callback = jasmine.createSpy('callback')
-      apm.run([], callback)
+      ppm.run([], callback)
 
       waitsFor 'waiting for help to complete', 60000, ->
         callback.callCount is 1
