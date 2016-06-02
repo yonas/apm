@@ -65,7 +65,7 @@ parseOptions = (args=[]) ->
   options = yargs(args).wrap(100)
   options.usage """
 
-    ppm - Atom Package Manager powered by https://atom.io
+    ppm - Proton Package Manager powered by https://github.com/yonas/proton
 
     Usage: ppm <command>
 
